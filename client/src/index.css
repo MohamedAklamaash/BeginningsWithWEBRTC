@@ -1,0 +1,26 @@
+body{
+  padding: 12px;
+  height: 100vh;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40vh;
+}
+
+input{
+  width: 45%;
+  border-radius: 30px;
+  padding: 1rem;
+}
+
+button{
+  text-align: center;
+  padding: 8px;
+  font-size: larger;
+  border-radius: 20px;
+}
