@@ -24,6 +24,10 @@ io.on("connection",(socket)=>{
         socket.join(room);
         io.to(socket.id).emit("room",data);
     });
+
+    socket.on("user:call",({to,offer})=>{
+        io.to(to).emit("incoming:call",{from:socket.id,offer});
+    });
 })
 
 server.listen(8001,()=>{

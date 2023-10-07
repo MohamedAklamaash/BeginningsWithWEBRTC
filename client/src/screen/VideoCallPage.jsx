@@ -1,6 +1,7 @@
 import React,{useEffect,useCallback,useState} from 'react'
 import { useSocket } from '../context/SocketProvider'
 import ReactPlayer from "react-player";
+import peer from "../services/p2p";
 const VideoCallPage = () => {
   const [SocketId, setSocketId] = useState(null);
   const [myStream, setmyStream] = useState("")
@@ -11,6 +12,8 @@ const VideoCallPage = () => {
   },[])
   const handleCall = useCallback(async()=>{
     const stream = await navigator.mediaDevices.getUserMedia({audio:true,video:true});
+    const offer = await peer.getOffer();
+    socket.emit("user:call",{to:SocketId,offer});
     setmyStream(stream);
   },[]);
   useEffect(()=>{
