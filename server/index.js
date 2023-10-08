@@ -26,7 +26,21 @@ io.on("connection",(socket)=>{
     });
 
     socket.on("user:call",({to,offer})=>{
+        console.log("User calling");
         io.to(to).emit("incoming:call",{from:socket.id,offer});
+    });
+    
+    socket.on("call:accepted",({to,ans})=>{
+        console.log("Call accepted");
+        io.to(to).emit("call_accepted", { from:socket.id,ans});
+    });
+
+    socket.on("peer:nego:needed",({offer,to})=>{
+        io.to(to).emit("peer:nego:needed",{from:socket.id,offer});
+    });
+
+    socket.on("peer:nego:done",({to,ans})=>{
+        io.to(to).emit("peer:nego:final",{from:to,ans});
     });
 })
 
