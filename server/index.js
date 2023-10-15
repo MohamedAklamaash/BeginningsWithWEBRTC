@@ -1,15 +1,18 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
-app.use(cors())
+app.use(
+  cors({
+    origin: "https://akla-video-call-app.vercel.app",
+  })
+);
 const {Server} = require("socket.io");
 const dotenv = require("dotenv").config();
 const http = require("node:http");
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin:
-      "https://akla-video-call-app-git-main-mohamed-aklamaashs-projects.vercel.app",
+    origin: "https://akla-video-call-app.vercel.app",
     methods: ["GET", "POST"],
   },
 });
