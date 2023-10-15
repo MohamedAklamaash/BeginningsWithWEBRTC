@@ -16,7 +16,9 @@ const io = new Server(server, {
     methods: ["GET", "POST"],
   },
 });
-
+app.route("/",(req,res)=>{
+    return res.send("Backend of Video call app");
+})
 const emailIdToSocket = new Map();
 const SocketIdToEmailId = new Map();
 
