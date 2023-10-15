@@ -2,6 +2,7 @@ import React, { useEffect, useCallback, useState } from "react";
 import { useSocket } from "../context/SocketProvider";
 import ReactPlayer from "react-player";
 import peer from "../services/p2p";
+import "../index.css";
 const VideoCallPage = () => {
   const [SocketId, setSocketId] = useState(null);
   const [myStream, setmyStream] = useState("");
@@ -103,29 +104,31 @@ const VideoCallPage = () => {
       <h1>{SocketId ? "Connected" : "No on in this room"}</h1>
       {SocketId ? <button onClick={sendStream}>Send Stream</button> : ""}
       <h1> {SocketId ? <button onClick={handleCall}>Call</button> : ""}</h1>
-      {myStream && (
-        <>
-          <h1>My Stream</h1>
-          <ReactPlayer
-            height="200px"
-            width="300px"
-            url={myStream}
-            playing={true}
-          />
-        </>
-      )}
-      {remoteStream && (
-        <>
-          <h1>Remote Stream</h1>
-          {console.log("RemoteStream:",remoteStream)}
-          <ReactPlayer
-            height="200px"
-            width="300px"
-            url={remoteStream}
-            playing={true}
-          />
-        </>
-      )}
+      <div className="videoCall">
+        {myStream && (
+          <>
+            <h1>My Stream</h1>
+            <ReactPlayer
+              height="200px"
+              width="300px"
+              url={myStream}
+              playing={true}
+            />
+          </>
+        )}
+        {remoteStream && (
+          <>
+            <h1>Remote Stream</h1>
+            {console.log("RemoteStream:", remoteStream)}
+            <ReactPlayer
+              height="200px"
+              width="300px"
+              url={remoteStream}
+              playing={true}
+            />
+          </>
+        )}
+      </div>
     </div>
   );
 };

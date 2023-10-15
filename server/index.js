@@ -3,13 +3,15 @@ const app = express();
 const cors = require("cors");
 app.use(cors())
 const {Server} = require("socket.io");
+const dotenv = require("dotenv").config();
 const http = require("node:http");
 const server = http.createServer(app);
-const io = new Server(server,{
-    cors:{
-        origin:"http://localhost:3000",
-        methods:["GET","POST"]
-    }
+const io = new Server(server, {
+  cors: {
+    origin:
+      "https://akla-video-call-app-git-main-mohamed-aklamaashs-projects.vercel.app",
+    methods: ["GET", "POST"],
+  },
 });
 
 const emailIdToSocket = new Map();
@@ -44,6 +46,6 @@ io.on("connection",(socket)=>{
     });
 })
 
-server.listen(8001,()=>{
+server.listen(process.env.PORT,()=>{
     console.log("Server is running on 8001");
 })

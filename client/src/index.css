@@ -24,3 +24,9 @@ button{
   font-size: larger;
   border-radius: 20px;
 }
+
+.videoCall{
+  display: grid;
+  grid-template-rows: minmax(1,2);
+  grid-area: auto;
+}
