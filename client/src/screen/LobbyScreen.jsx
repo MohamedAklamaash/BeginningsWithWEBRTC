@@ -16,7 +16,7 @@ const LobbyScreen = () => {
   );
   const handleRoomJoin = useCallback((data)=>{
     const {email,room} = data;
-    navigate(`https://akla-video-call-app.vercel.app/room/${room}`);
+    navigate(`/room/${room}`);
   },[navigate])
   useEffect(() => {
     socket.on("room", handleRoomJoin);
